@@ -1,6 +1,35 @@
 <template>
-  <section>
-      <h1>Hi! that's us</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptates hic perferendis nam quae, deserunt nihil in, ratione natus labore dolor mollitia? Necessitatibus asperiores provident ut suscipit voluptate, illum repellat.</p>
+  <section id="about-page">
+      <h1>{{ title }}</h1>
+      <p>{{ content }}</p>
   </section>
 </template>
+
+<script>
+export default {
+  asyncData (context) {
+    return context.app.$storyapi
+      .get('cdn/stories/about', {
+        version: 'draft'
+      }
+      ).then((res) => {
+        return {
+          title: res.data.story.content.Title,
+          content: res.data.story.content.Content
+        }
+      })
+  }
+}
+</script>
+
+<style scoped>
+#about-page {
+  width: 80%;
+  max-width: 500px;
+  margin: auto;
+}
+
+#about-page p{
+  white-space: pre-line;
+}
+</style>

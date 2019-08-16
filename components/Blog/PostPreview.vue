@@ -59,7 +59,7 @@ a {
 
 .post-preview-content {
   text-align: center;
-  padding: 10rem;
+  padding: 180px 0;
 }
 
 @media (min-width: 35rem) {
